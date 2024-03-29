@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Employe List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<h2 class="text-center my-4">Employe Affectation</h2>
+<h:form>
+    <h:outputText value="Employe Name" />
+    <h:selectOneListbox value="#{employeBean.selectedEmploye}">
+        <f:selectItems value="#{employeBean.employeDAO.selectAll()}" var="employe" itemLabel="#{employe.name}" itemValue="#{employe}" />
+    </h:selectOneListbox>
+
+    <h:outputText value="Project Name" />
+    <h:selectOneListbox value="#{employeBean.selectedProject}">
+        <f:selectItems value="#{employeBean.projectDAO.selectAllProjects()}" var="project" itemLabel="#{project.name}" itemValue="#{project}" />
+    </h:selectOneListbox>
+
+    <h:outputText value="Implication" />
+    <h:selectOneListbox value="#{employeBean.selectedPercentage}">
+        <f:selectItems value="#{employeBean.pourcentageItems}" />
+    </h:selectOneListbox>
+
+    <h:commandButton value="Confirmer Affectation" action="#{employeBean.affecterEmployeProject}" />
+</h:form>
+
+</body>
+</html>
